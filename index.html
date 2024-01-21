@@ -1,0 +1,282 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Repositories Viewer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      main {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 1rem;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      #usernameInput {
+        padding: 0.5rem;
+        font-size: 16px;
+        width: 60%;
+        margin-right: 1rem;
+      }
+
+      #searchButton {
+        padding: 0.5rem 1rem;
+        font-size: 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+
+      #repositoriesList {
+        list-style: none;
+        padding: 0;
+      }
+
+      .repository-item {
+        margin: 0.5rem 0;
+        padding: 1rem;
+        background-color: #eee;
+        border-radius: 4px;
+      }
+
+      .repository-item a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>GitHub Repositories Viewer</h1>
+      <p>
+        Explore the GitHub REST API
+        <a href="https://docs.github.com/en/rest/reference" target="_blank"
+          >here</a
+        >.
+      </p>
+    </header>
+    <main>
+      <div>
+        <input
+          type="text"
+          id="usernameInput"
+          placeholder="Enter GitHub username"
+          value="Johnpapa"
+        />
+        <button id="searchButton" onclick="fetchRepositories()">Search</button>
+      </div>
+      <p id="totalRepositories">Total Repositories: 30</p>
+      <ul id="repositoriesList">
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/.github">.github</a>
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/aggregator-app"
+            >aggregator-app</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/all-contributors"
+            >all-contributors</a
+          >
+        </li>
+        <li class="repository-item">
+          <a
+            href="https://github.com/johnpapa/analyze-and-generate-images-with-Azure-AI"
+            >analyze-and-generate-images-with-Azure-AI</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular">angular</a>
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular-2-first-look-launcher"
+            >angular-2-first-look-launcher</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular-architecture"
+            >angular-architecture</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular-cli">angular-cli</a>
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular-cosmosdb"
+            >angular-cosmosdb</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular-event-view-cli"
+            >angular-event-view-cli</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular-expiring-http-cache"
+            >angular-expiring-http-cache</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular-first-look-examples"
+            >angular-first-look-examples</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular-first-look-hosted"
+            >angular-first-look-hosted</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular-lazy-load-demo"
+            >angular-lazy-load-demo</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular-ngrx-data"
+            >angular-ngrx-data</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/Angular-NuGet">Angular-NuGet</a>
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular-preload-and-interceptors"
+            >angular-preload-and-interceptors</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular-quickstart-lib"
+            >angular-quickstart-lib</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular-rxjs-shared-examples"
+            >angular-rxjs-shared-examples</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular-styleguide"
+            >angular-styleguide</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular-tour-of-heroes"
+            >angular-tour-of-heroes</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular-what-if"
+            >angular-what-if</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular.breeze.storagewip"
+            >angular.breeze.storagewip</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/angular2-force"
+            >angular2-force</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/AngularWorkshopLabs"
+            >AngularWorkshopLabs</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/awesome-angular-workshop"
+            >awesome-angular-workshop</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/awesome-frameworkless"
+            >awesome-frameworkless</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/awesome-lit-html"
+            >awesome-lit-html</a
+          >
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/awesome-vue">awesome-vue</a>
+        </li>
+        <li class="repository-item">
+          <a href="https://github.com/johnpapa/azure-docs">azure-docs</a>
+        </li>
+      </ul>
+    </main>
+
+    <script>
+      async function fetchRepositories() {
+        const username = document.getElementById("usernameInput").value;
+
+        if (username) {
+          const response = await fetch(
+            `https://api.github.com/users/${username}/repos`
+          );
+          const repositories = await response.json();
+
+          displayRepositories(repositories);
+          displayTotalRepositories(repositories.length);
+        }
+      }
+
+      function displayRepositories(repositories) {
+        const repositoriesList = document.getElementById("repositoriesList");
+        repositoriesList.innerHTML = "";
+
+        repositories.forEach((repo) => {
+          const listItem = document.createElement("li");
+          listItem.classList.add("repository-item");
+
+          const link = document.createElement("a");
+          link.href = repo.html_url;
+          link.textContent = repo.name;
+
+          listItem.appendChild(link);
+          repositoriesList.appendChild(listItem);
+        });
+      }
+
+      function displayTotalRepositories(totalCount) {
+        const totalRepositoriesElement = document.getElementById(
+          "totalRepositories"
+        );
+        totalRepositoriesElement.textContent = `Total Repositories: ${totalCount}`;
+      }
+
+      // Fetch repositories for the default username when the page loads
+      window.onload = fetchRepositories;
+    </script>
+    <!-- Link to GitHub Pages -->
+    <footer>
+      <p>
+        View this project on
+        <a href="https://yourusername.github.io/your-repo/" target="_blank"
+          >GitHub Pages</a
+        >.
+      </p>
+    </footer>
+  </body>
+</html>
